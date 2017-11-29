@@ -28,42 +28,7 @@ $(document).ready(function () {
 
         $('#endDate').val();
         // $().serialize() will grab all the named inputs in the form, and put their values into a url-encoded string
-        console.log($('#searchNasa').serialize())
+        console.log($('#searchNasa').serialize());
 
-    })
-
-    $('#birthday-form').on('submit', function(event){
-        event.preventDefault()
-
-        $.post('/animal/birthday', $('#birthday-form').serialize(), function(data){
-            getFreshData()
-        })
-    })
-
-    // this function loops through the animals array, and creates an <li> for each of them
-    var render = function(){
-        $('#animal-list').empty()
-        for ( var i = 0; i < animalList.length; i++ ) {
-            $('#animal-list').append(`<li>${animalList[i].animalName}, ${animalList[i].animalAge} -- ${animalList[i].animalSpecies}</li>`)
-        }
-    }
-
-    var animalList = []
-    var getFreshData = function(){
-
-        console.log('getting data')
-        $.get('/animal', function(data){
-            animalList = data
-            render()
-            console.log(animalList)
-        })
-    }
-
-    // get fresh data as soon as the page loads. don't wait for user interaction.
-    getFreshData()
-
-
-
-
-
+    });
 });
